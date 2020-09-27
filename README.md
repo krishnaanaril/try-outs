@@ -1,2 +1,4 @@
 # try-outs
 Code try-outs and some POCs
+
+1. [Gang of Four Design Patterns (TypeScript)](https://github.com/krishnaanaril/try-outs/tree/master/design-patterns)
