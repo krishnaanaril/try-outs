@@ -1,6 +1,6 @@
 # [Casbin.NET](https://github.com/casbin/Casbin.NET) - Proof Of Concept
 
-This is a dotnet core console application to evaluate access requests against policies defined in PERM model of Casbin.
+This is a dotnet core console application to evaluate access requests against policies defined in PERM model of Casbin. If you are interested, you can read my [blog](https://krishnamohan.dev/blog/using-casbin-for-authorization-in-dotnet) to know more about it.
 
 ## Basic
 * [Model](https://github.com/krishnaanaril/try-outs/blob/master/casbin-poc/casbin-config/basic_model.conf)
