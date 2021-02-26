@@ -1,0 +1,117 @@
+2021-02-25 12:21:26.058 +05:30 [INF] Starting up
+2021-02-25 12:21:28.122 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2021-02-25 12:21:28.131 +05:30 [INF] Hosting environment: Development
+2021-02-25 12:21:28.151 +05:30 [INF] Content root path: C:\KrishnaMohan\Github\try-outs\MediatRSample\MediatRSampleAPI
+2021-02-25 12:21:28.187 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/swagger/index.html - -
+2021-02-25 12:21:28.290 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/swagger/index.html - - - 200 - text/html;charset=utf-8 106.0481ms
+2021-02-25 12:21:28.694 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/swagger/v1/swagger.json - -
+2021-02-25 12:21:28.790 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 88.4313ms
+2021-02-25 12:21:34.183 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/slowtest - -
+2021-02-25 12:21:34.220 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.Get (MediatRSampleAPI)'
+2021-02-25 12:21:34.257 +05:30 [INF] Route matched with {action = "Get", controller = "SlowTest"}. Executing controller action with signature System.Threading.Tasks.Task`1[System.String] Get(System.Threading.CancellationToken) on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 12:21:34.348 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.Get (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 12:21:34.350 +05:30 [INF] Starting to do slow work
+2021-02-25 12:21:36.352 +05:30 [INF] Finished slow delay of 2 seconds.
+2021-02-25 12:21:36.357 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.Get (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2003.6477ms.
+2021-02-25 12:21:36.364 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2021-02-25 12:21:36.370 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.Get (MediatRSampleAPI) in 2109.0065ms
+2021-02-25 12:21:36.371 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.Get (MediatRSampleAPI)'
+2021-02-25 12:21:36.374 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/slowtest - - - 200 - text/plain;+charset=utf-8 2191.2830ms
+2021-02-25 13:33:00.787 +05:30 [INF] Starting up
+2021-02-25 13:33:02.951 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2021-02-25 13:33:02.961 +05:30 [INF] Hosting environment: Development
+2021-02-25 13:33:02.973 +05:30 [INF] Content root path: C:\KrishnaMohan\Github\try-outs\MediatRSample\MediatRSampleAPI
+2021-02-25 13:33:03.002 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/swagger/index.html - -
+2021-02-25 13:33:03.104 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/swagger/index.html - - - 200 - text/html;charset=utf-8 104.4422ms
+2021-02-25 13:33:04.252 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/swagger/v1/swagger.json - -
+2021-02-25 13:33:04.403 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 151.1748ms
+2021-02-25 13:33:11.511 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/usemediatr - -
+2021-02-25 13:33:11.549 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:33:11.563 +05:30 [INF] Route matched with {action = "UseMediatR", controller = "SlowTest"}. Executing controller action with signature Void UseMediatR() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:33:11.649 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:33:11.654 +05:30 [INF] Notifier 01 -> Message: From API
+2021-02-25 13:33:11.655 +05:30 [INF] Notifier 02 -> Message: From API
+2021-02-25 13:33:11.658 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 4.5057ms.
+2021-02-25 13:33:11.663 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) in 96.2354ms
+2021-02-25 13:33:11.663 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:33:11.664 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/usemediatr - - - 200 - - 152.8931ms
+2021-02-25 13:33:21.193 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/usemediatr - -
+2021-02-25 13:33:21.195 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:33:21.195 +05:30 [INF] Route matched with {action = "UseMediatR", controller = "SlowTest"}. Executing controller action with signature Void UseMediatR() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:33:21.213 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:33:21.213 +05:30 [INF] Notifier 01 -> Message: From API
+2021-02-25 13:33:21.213 +05:30 [INF] Notifier 02 -> Message: From API
+2021-02-25 13:33:21.213 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 0.1379ms.
+2021-02-25 13:33:21.213 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) in 18.088ms
+2021-02-25 13:33:21.213 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:33:21.214 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/usemediatr - - - 200 - - 21.7301ms
+2021-02-25 13:33:25.635 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/usemediatr - -
+2021-02-25 13:33:25.636 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:33:25.636 +05:30 [INF] Route matched with {action = "UseMediatR", controller = "SlowTest"}. Executing controller action with signature Void UseMediatR() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:33:25.653 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:33:25.654 +05:30 [INF] Notifier 01 -> Message: From API
+2021-02-25 13:33:25.654 +05:30 [INF] Notifier 02 -> Message: From API
+2021-02-25 13:33:25.654 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 0.3279ms.
+2021-02-25 13:33:25.654 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) in 17.8551ms
+2021-02-25 13:33:25.654 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:33:25.655 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/usemediatr - - - 200 - - 19.3478ms
+2021-02-25 13:33:25.713 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/favicon.ico - -
+2021-02-25 13:33:25.715 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/favicon.ico - - - 404 - - 1.3105ms
+2021-02-25 13:34:27.197 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/usemediatr - -
+2021-02-25 13:34:27.199 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:34:27.199 +05:30 [INF] Route matched with {action = "UseMediatR", controller = "SlowTest"}. Executing controller action with signature Void UseMediatR() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:34:27.241 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:34:27.241 +05:30 [INF] Notifier 01 -> Message: From API
+2021-02-25 13:34:27.241 +05:30 [INF] Notifier 02 -> Message: From API
+2021-02-25 13:34:27.241 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 0.0712ms.
+2021-02-25 13:34:27.241 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI) in 42.0523ms
+2021-02-25 13:34:27.241 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.UseMediatR (MediatRSampleAPI)'
+2021-02-25 13:34:27.243 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/usemediatr - - - 200 - - 46.0684ms
+2021-02-25 13:34:27.313 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/favicon.ico - -
+2021-02-25 13:34:27.314 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/favicon.ico - - - 404 - - 0.7141ms
+2021-02-25 13:39:07.110 +05:30 [INF] Starting up
+2021-02-25 13:39:08.860 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2021-02-25 13:39:08.869 +05:30 [INF] Hosting environment: Development
+2021-02-25 13:39:08.878 +05:30 [INF] Content root path: C:\KrishnaMohan\Github\try-outs\MediatRSample\MediatRSampleAPI
+2021-02-25 13:39:08.915 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/swagger/index.html - -
+2021-02-25 13:39:09.029 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/swagger/index.html - - - 200 - text/html;charset=utf-8 114.3870ms
+2021-02-25 13:39:10.046 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/swagger/v1/swagger.json - -
+2021-02-25 13:39:10.142 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 96.2495ms
+2021-02-25 13:39:57.900 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/notify - -
+2021-02-25 13:39:57.948 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.Notify (MediatRSampleAPI)'
+2021-02-25 13:39:57.971 +05:30 [INF] Route matched with {action = "Notify", controller = "SlowTest"}. Executing controller action with signature Void Notify() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:39:58.056 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.Notify (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:39:58.062 +05:30 [INF] Notifier 01 -> Message: From API
+2021-02-25 13:39:58.062 +05:30 [INF] Notifier 02 -> Message: From API
+2021-02-25 13:39:58.066 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.Notify (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 4.7634ms.
+2021-02-25 13:39:58.070 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.Notify (MediatRSampleAPI) in 95.4909ms
+2021-02-25 13:39:58.070 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.Notify (MediatRSampleAPI)'
+2021-02-25 13:39:58.072 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/notify - - - 200 - - 172.4194ms
+2021-02-25 13:40:07.496 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/requestresponse - -
+2021-02-25 13:40:07.498 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI)'
+2021-02-25 13:40:07.500 +05:30 [INF] Route matched with {action = "RequestResonse", controller = "SlowTest"}. Executing controller action with signature System.String RequestResonse() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:40:07.529 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:40:07.553 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 24.0487ms.
+2021-02-25 13:40:07.560 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2021-02-25 13:40:07.561 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI) in 60.5652ms
+2021-02-25 13:40:07.561 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI)'
+2021-02-25 13:40:07.561 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/requestresponse - - - 200 - text/plain;+charset=utf-8 65.4172ms
+2021-02-25 13:40:17.112 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/oneway - -
+2021-02-25 13:40:17.113 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.OneWay (MediatRSampleAPI)'
+2021-02-25 13:40:17.114 +05:30 [INF] Route matched with {action = "OneWay", controller = "SlowTest"}. Executing controller action with signature Void OneWay() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:40:17.132 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.OneWay (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:40:17.155 +05:30 [INF] In Sync One Way Handler
+2021-02-25 13:40:17.155 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.OneWay (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 23.2829ms.
+2021-02-25 13:40:17.155 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.OneWay (MediatRSampleAPI) in 41.4912ms
+2021-02-25 13:40:17.155 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.OneWay (MediatRSampleAPI)'
+2021-02-25 13:40:17.155 +05:30 [INF] In Async One Way Handler
+2021-02-25 13:40:17.156 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/oneway - - - 200 - - 43.9979ms
+2021-02-25 13:41:14.847 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:62705/requestresponse - -
+2021-02-25 13:41:14.848 +05:30 [INF] Executing endpoint 'MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI)'
+2021-02-25 13:41:14.849 +05:30 [INF] Route matched with {action = "RequestResonse", controller = "SlowTest"}. Executing controller action with signature System.String RequestResonse() on controller MediatRSampleAPI.Controllers.SlowTestController (MediatRSampleAPI).
+2021-02-25 13:41:14.874 +05:30 [INF] Executing action method MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI) - Validation state: "Valid"
+2021-02-25 13:41:14.895 +05:30 [INF] Executed action method MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 21.1733ms.
+2021-02-25 13:41:14.912 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2021-02-25 13:41:14.912 +05:30 [INF] Executed action MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI) in 63.4844ms
+2021-02-25 13:41:14.912 +05:30 [INF] Executed endpoint 'MediatRSampleAPI.Controllers.SlowTestController.RequestResonse (MediatRSampleAPI)'
+2021-02-25 13:41:14.913 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:62705/requestresponse - - - 200 - text/plain;+charset=utf-8 65.4954ms
