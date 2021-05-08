@@ -12,7 +12,7 @@
 
 1. [Adapter](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/adapter.ts)
 2. [Bridge](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/bridge.ts)
-3. [Decorator](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/composite.ts)
+3. [Decorator](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/decorator.ts)
 4. [Facade](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/facade.ts)
 5. [Flyweight](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/flyweight.ts)
 6. [Proxy](https://github.com/krishnaanaril/try-outs/blob/master/design-patterns/structural/proxy.ts)
