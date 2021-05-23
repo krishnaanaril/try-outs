@@ -1,0 +1,52 @@
+@page {
+    size: A4;
+    margin: 12.7mm 12.7mm;
+}
+
+* {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    color: black;
+}
+
+.header-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.normal-text {
+    font-size: 12px;
+}
+
+.txt-right-align {
+    text-align: right;
+}
+
+.section-header {
+    padding-bottom: 2px;
+    border-bottom: 1px solid;
+}
+
+.item-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-header-text {
+    font-weight: bold;
+    margin: 5px;
+}
+
+.new-page {
+    page-break-before: always;
+}
+
+.bold-section {
+    font-weight: bold;
+}

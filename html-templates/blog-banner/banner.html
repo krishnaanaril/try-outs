@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1200, height=675, initial-scale=1.0">
+    <title>Banner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="banner.css"> -->
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            width: 1200px;
+            height: 675px;
+            background: rgb(36, 0, 0);
+            background: linear-gradient(90deg, rgba(36, 0, 0, 1) 0%, rgba(121, 9, 9, 1) 76%, rgba(255, 102, 0, 1) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 50px;
+        }
+
+        h1 {
+            color: whitesmoke;
+            font-size: 72px;
+            font-weight: bold;
+        }
+
+        .dp {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid whitesmoke;
+            margin: auto;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            padding-bottom: 50px;
+        }
+
+        .author {
+            color: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        h2,
+        h3 {
+            margin: 0 20px;
+
+        }
+
+        h3 {
+            color: #998585;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>What did I learn this week (2021) - 20</h1>
+        </div>
+        <div class="details">
+            <div style="display: flex;justify-content: space-around;">
+                <img class="dp" src="dp.webp" alt="author" srcset="">
+            </div>
+            <div class="author">
+                <h2>Krishna Mohan A M</h2>
+                <h3>May 16, 2021</h3>
+            </div>
+        </div>
+    </div>    
+</body>
+
+</html>
