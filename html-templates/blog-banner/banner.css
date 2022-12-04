@@ -5,8 +5,8 @@
 .container {
     width: 1200px;
     height: 675px;
-    background: rgb(36,0,0);
-    background: linear-gradient(90deg, rgba(36,0,0,1) 0%, rgba(121,9,9,1) 76%, rgba(255,102,0,1) 100%);
+    background: rgb(2,0,36);
+    background: linear-gradient(126deg, rgba(2,0,36,1) 0%, rgba(5,5,94,1) 63%, rgba(0,212,255,1) 100%); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;

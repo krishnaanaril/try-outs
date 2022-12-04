@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Viewport Units Sample</title>
+</head>
+<style>
+    body {
+        margin: 0;        
+    }   
+    
+    .container {
+        display: flex;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    .blocks {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .lvh {
+        height: 100lvh;        
+        background-color: red;
+    }
+
+    .svh {
+        height: 100svh;        
+        background-color: aqua;
+    }
+
+    .dvh {
+        height: 100dvh;        
+        background-color: blue;
+    }
+
+    .vh {
+        height: 100vh;        
+        background-color: lightgreen;
+    }
+
+    .vb {
+        height: 100vb;        
+        background-color: lightgreen;
+    }
+
+    .full {
+        height: 100%;        
+        background-color: yellow;
+    }
+
+    footer {
+        padding: 1rem;
+        text-align: center;
+        background-color: brown;
+        color: whitesmoke;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="blocks lvh">
+            <h3>lvh</h3>
+            <footer>Footer</footer>
+        </div>
+        <div class="blocks svh">
+            <h3>svh</h3>
+            <footer>Footer</footer>
+        </div>
+        <div class="blocks dvh">
+            <h3>dvh</h3>
+            <footer>Footer</footer>
+        </div>
+         
+        <div class="blocks vh">
+            <h3>vh</h3>
+            <footer>Footer</footer>
+        </div>
+        <div class="blocks vb">
+            <h3>vb</h3>
+            <footer>Footer</footer>
+        </div>
+        <div class="blocks full">
+            <h3>100%</h3>
+            <footer>Footer</footer>
+        </div>
+    </div>
+</body>
+
+</html>
