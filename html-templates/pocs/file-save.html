@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save File like a native app</title>
+    <script>
+        function downloadText() {
+        let link = document.createElement('a');
+        link.download = 'hello.txt';
+
+        let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
+
+        link.href = URL.createObjectURL(blob);
+        link.click();
+
+        // delete the internal blob reference, to let the browser clear memory from it
+        URL.revokeObjectURL(link.href);        
+    }
+
+    async function downloadText2() {
+        console.log(`isActive: ${navigator.userActivation.isActive}`);
+        const saveOptions = {
+            excludeAcceptAllOption: false, 
+            suggestedName: 'SuggestName.txt',
+            types: [{
+                accept: { "text/plain": [".txt"] },
+                description: 'A plain text'
+            }]
+        };
+        const newHandle = await window.showSaveFilePicker(saveOptions);
+        const writableStream = await newHandle.createWritable();
+        let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
+        await writableStream.write(blob);
+        await writableStream.close();
+    }
+    </script>
+    <style>
+        .container {
+            width: 500px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .container > div {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <button type="button"                 
+                     onclick="downloadText2()">Download File New</button>
+        </div>
+        <div>
+            <button type="button"                 
+                     onclick="downloadText()">Download File</button>
+        </div>
+    </div>
+</body>
+</html>
