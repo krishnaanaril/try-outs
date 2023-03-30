@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML5 Media Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        input[type="range"] {
+            --seek-before-width: 0%;
+            --volume-before-width: 75%;
+            --buffered-width: 0%;
+            position: relative;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+            height: 0.5rem;
+            border-radius: 2rem;
+        }
+
+        /******** Firefox ********/
+        input[type="range"]::-moz-range-track {
+            background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+            height: 0.5rem;
+            border-radius: 2rem;
+        }
+
+        /***** Thumb Styles *****/
+        /***** Chrome, Safari, Opera, and Edge Chromium *****/
+        input[type="range"]::-webkit-slider-thumb {
+            position: relative;
+            box-sizing: content-box;
+            -webkit-appearance: none;
+            /* Override default look */
+            appearance: none;
+            margin-top: -4px;
+            /* Centers thumb on the track */
+            background-color: #5cd5eb;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+        }
+
+        /***** Firefox *****/
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            /*Removes extra border that FF applies*/
+            border-radius: 0;
+            /*Removes default border-radius that FF applies*/
+            background-color: #5cd5eb;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+        }
+
+        /***** hover Styles *****/
+        /* Removes default hover */
+        input[type="range"]:hover {
+            outline: none;
+        }
+
+        /***** Chrome, Safari, Opera, and Edge Chromium *****/
+        input[type="range"]:hover::-webkit-slider-thumb {
+            border: 1px solid #053a5f;
+            outline: 3px solid #053a5f;
+            outline-offset: 0.125rem;
+        }
+
+        /******** Firefox ********/
+        input[type="range"]:hover::-moz-range-thumb {
+            border: 1px solid #053a5f;
+            outline: 3px solid #053a5f;
+            outline-offset: 0.125rem;
+        }
+
+        input[type="range"]::before {
+            position: absolute;
+            content: "";
+            top: 0px;
+            left: 0;
+            height: 0.5rem;
+            width: var(--seek-before-width);
+            background-color: #007db5;
+            cursor: pointer;
+            border-radius: 2rem;
+        }
+
+        #volumeSlider::before {
+            position: absolute;
+            content: "";
+            top: 0px;
+            left: 0;
+            height: 0.5rem;
+            width: var(--volume-before-width);
+            background-color: #007db5;
+            cursor: pointer;
+            border-radius: 2rem;
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background-color: #007db5;
+            height: 0.5rem;
+            border-radius: 2rem;
+        }
+
+
+        /***********IE*************/
+        input[type="range"]::-ms-fill-lower {
+            background-color: #007db5;
+        }
+
+        input[type="range"]::-ms-fill-upper {
+            background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+        }
+    </style>
+    <script>
+        var pauseButton;
+        var playButton;
+        var audio = new Audio(
+            "sounds/podcast_sample.mp3"
+        );
+        var audioContent;
+        var volumeSlider;
+        var volume_up;
+        var volume_down;
+        var volume_off;
+        var seekSlider;
+        var currentTimeContainer;
+        var durationContainer;
+        var soundButton;
+        var raf = null;
+
+        window.onload = () => {
+            pauseButton = document.getElementById('pause_button');
+            playButton = document.getElementById('play_button');
+            audioContent = document.getElementById('podcast_audio');
+            volumeSlider = document.getElementById('volumeSlider');
+            volume_up = document.getElementById('volume_up');
+            volume_down = document.getElementById('volume_down');
+            volume_off = document.getElementById('volume_off');
+            seekSlider = document.getElementById('seek-slider');
+            currentTimeContainer = document.getElementById('current-time');
+            durationContainer = document.getElementById('duration');
+            soundButton = document.getElementById('sound-button');
+
+            if (audio.readyState > 0) {
+                initAudio('readyState is set');
+            } else {
+                audio.addEventListener('loadedmetadata', () => {
+                    initAudio('metaData loaded');
+                });
+            }
+
+            audio.addEventListener('progress', displayBufferedAmount);
+
+            volumeSlider.addEventListener('input', (event) => {
+                console.log('input: ', event.target.value);
+                const currentVolume = event.target.value;
+                audio.volume = currentVolume;
+                if (currentVolume > 0.5) {
+                    volume_up.style.display = '';
+                    volume_down.style.display = 'none';
+                    volume_off.style.display = 'none';
+                } else if (currentVolume == 0) {
+                    volume_up.style.display = 'none';
+                    volume_down.style.display = 'none';
+                    volume_off.style.display = '';
+                } else {
+                    volume_up.style.display = 'none';
+                    volume_down.style.display = '';
+                    volume_off.style.display = 'none';
+                }
+            });
+
+            volumeSlider.addEventListener('input', (event) => {
+                audio.volume = event.target.value;
+                showProgress(event.target);
+            });
+
+            seekSlider.addEventListener('input', (event) => {
+                currentTimeContainer.textContent = getTimeCodeFromNum(event.target.value);
+                if (!audio.paused && raf != null) {
+                    cancelAnimationFrame(raf);
+                }
+                showProgress(event.target);
+            });
+
+            seekSlider.addEventListener('change', (event) => {
+                audio.currentTime = seekSlider.value;
+                if (!audio.paused) {
+                    requestAnimationFrame(whilePlaying);
+                }
+            });
+
+            soundButton.addEventListener('click', (event) => {
+                console.log('sound click');
+                audio.muted = audio.muted ? false : true;
+                const currentVolume = audio.volume;
+                console.log(currentVolume);
+                if (audio.muted) {
+                    volume_up.style.display = 'none';
+                    volume_down.style.display = 'none';
+                    volume_off.style.display = '';
+                } else if (currentVolume > 0.5) {
+                    volume_up.style.display = '';
+                    volume_down.style.display = 'none';
+                    volume_off.style.display = 'none';
+                } else {
+                    volume_up.style.display = 'none';
+                    volume_down.style.display = '';
+                    volume_off.style.display = 'none';
+                }
+            });
+        };
+
+        function showProgress(rangeInput) {
+            if (rangeInput === seekSlider) {
+                seekSlider.style.setProperty('--seek-before-width', rangeInput.value / rangeInput.max * 100 + '%');
+            } else {
+                volumeSlider.style.setProperty('--volume-before-width', rangeInput.value / rangeInput.max * 100 + '%')
+            }
+        }
+
+        function initAudio(message) {
+            console.log(message);
+            seekSlider.value = 0;
+            console.log(seekSlider.value);
+            // console.dir(audio);
+            // console.dir(audioContent);
+            audio.volume = .75;
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+        }
+
+        function displayDuration() {
+            durationContainer.textContent = getTimeCodeFromNum(audio.duration);
+        }
+
+        function setSliderMax() {
+            seekSlider.max = Math.floor(audio.duration);
+        }
+
+        function whilePlaying() {
+            seekSlider.value = Math.floor(audio.currentTime);
+            currentTimeContainer.textContent = getTimeCodeFromNum(seekSlider.value);
+            seekSlider.style.setProperty('--seek-before-width', `${seekSlider.value / seekSlider.max * 100}%`);
+            raf = requestAnimationFrame(whilePlaying);
+        }
+
+        function playAudio(event) {
+            pauseButton.style.display = '';
+            playButton.style.display = 'none';
+            console.log(pauseButton.style.display);
+            if (audio.paused) {
+                audio.play();
+                requestAnimationFrame(whilePlaying);
+            }
+        }
+
+        function pauseAudio(event) {
+            pauseButton.style.display = 'none';
+            playButton.style.display = '';
+            console.log(audio.played);
+            audio.pause();
+            if (raf != null) {
+                cancelAnimationFrame(raf);
+            }
+        }
+
+        function forwardTenSeconds(event) {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
+            printCurrentTime();
+        }
+
+        function backwardTenSeconds(event) {
+            audio.currentTime = Math.max(0, audio.currentTime - 30);
+            printCurrentTime();
+        }
+
+        function printCurrentTime() {
+            console.log(`${getTimeCodeFromNum(audio.currentTime)} / ${getTimeCodeFromNum(audio.duration)}`);
+        }
+
+        //turn 128 seconds into 2:08
+        function getTimeCodeFromNum(num) {
+            let seconds = parseInt(num);
+            let minutes = parseInt(seconds / 60);
+            seconds -= minutes * 60;
+            const hours = parseInt(minutes / 60);
+            minutes -= hours * 60;
+
+            if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+            return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+                seconds % 60
+            ).padStart(2, 0)}`;
+        }
+
+        function displayBufferedAmount() {
+            const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
+            console.log(`bufferedAmount: ${bufferedAmount}`);
+            seekSlider.style.setProperty('--buffered-width', `${(bufferedAmount / seekSlider.max) * 100}%`);
+        }
+
+        if ('mediaSession' in navigator) {
+            console.info('mediasession supported');
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: 'Guardian\'s Football Podcast',
+                artist: 'Krishna Mohan',
+                album: 'Some Podcast',
+                artwork: [
+                    { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '96x96', type: 'image/png' },
+                    { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '128x128', type: 'image/png' },
+                    { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '192x192', type: 'image/png' },
+                    { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '256x256', type: 'image/png' },
+                    { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '384x384', type: 'image/png' },
+                    { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '512x512', type: 'image/png' }
+                ]
+            });
+
+            navigator.mediaSession.setActionHandler('play', (event) => {
+                console.log('In ms play');
+                console.log(event);
+                playAudio();
+            });
+            navigator.mediaSession.setActionHandler('pause', (event) => {
+                console.log('In ms play');
+                console.log(event);
+                pauseAudio();
+            });
+            navigator.mediaSession.setActionHandler('seekbackward', (details) => {
+                console.log('seek backward');
+                console.log(details);
+                audio.currentTime = audio.currentTime - (details.seekOffset || 10);
+            });
+            navigator.mediaSession.setActionHandler('seekforward', (details) => {
+                console.log('seek forward');
+                console.log(details);
+                audio.currentTime = audio.currentTime + (details.seekOffset || 10);
+            });
+            navigator.mediaSession.setActionHandler('seekto', (details) => {
+                console.log('fast seek');
+                console.log(details);
+                if (details.fastSeek && 'fastSeek' in audio) {
+                    audio.fastSeek(details.seekTime);
+                    return;
+                }
+                audio.currentTime = details.seekTime;
+            });
+            navigator.mediaSession.setActionHandler('stop', (details) => {
+                console.log('stop');
+                console.log(details);
+                audio.currentTime = 0;
+                seekSlider.value = 0;
+                audioPlayerContainer.style.setProperty('--seek-before-width', '0%');
+                currentTimeContainer.textContent = '0:00';
+                // if(playState === 'pause') {
+                //     playAnimation.playSegments([0, 14], true);
+                //     cancelAnimationFrame(raf);
+                //     playState = 'play';
+                // }
+                pauseButton.style.display = 'none';
+                playButton.style.display = '';
+            });
+        } else {
+            console.info('mediasession not supported');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container mx-auto bg-red-100 min-h-screen">
+        <div>
+            <audio id="podcast_audio" src="sounds/podcast_sample.mp3" class="px-2 w-full" preload="metadata">
+                <a href="sounds/podcast_sample.mp3">
+                    Download <audio src=""></audio>
+                </a>
+            </audio>
+        </div>
+    </div>
+    <div id="audio-container" class="absolute w-full h-20 bottom-0 bg-blue-300 flex flex-col">
+        <div class="px-4">
+            <input type="range" name="seek-slider" id="seek-slider" class="w-full" value="0">
+            <div class="flex flex-row justify-between">
+                <span id="current-time">0.00</span>
+                <span id="duration">3.45</span>
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="flex flex-row justify-around w-1/3">
+                <div>
+                    <button id="backward_button" type="button" onclick="backwardTenSeconds(event)">
+                        <span class="material-icons">
+                            forward_10
+                        </span>
+                    </button>
+                </div>
+                <div>
+                    <button id="pause_button" style="display: none" type="button" onclick="pauseAudio(event)">
+                        <span class="material-icons text-4xl">
+                            pause
+                        </span>
+                    </button>
+
+                    <button id="play_button" type="button" onclick="playAudio(event)">
+                        <span class="material-icons text-4xl">
+                            play_arrow
+                        </span>
+                    </button>
+                </div>
+                <div>
+                    <button id="foward_button" type="button" onclick="forwardTenSeconds(event)">
+                        <span class="material-icons">
+                            forward_10
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="sound-button">
+                    <span id="volume_up" class="material-icons text-2xl">
+                        volume_up
+                    </span>
+                    <span id="volume_down" class="material-icons text-2xl" style="display: none">
+                        volume_down
+                    </span>
+                    <span id="volume_off" class="material-icons text-2xl" style="display: none">
+                        volume_off
+                    </span>
+                </button>
+                <input type="range" name="volume" id="volumeSlider" min="0" max="1" value="0.75" step="0.01">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
